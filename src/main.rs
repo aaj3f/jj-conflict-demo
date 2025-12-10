@@ -4,10 +4,12 @@ use clap::Parser;
 #[command(name = "greeting")]
 #[command(about = "A simple greeting application")]
 struct Args {
-    // No arguments yet
+    /// Name of the user to greet
+    #[arg(short, long, default_value = "World")]
+    user: String,
 }
 
 fn main() {
-    let _args = Args::parse();
-    println!("Hello, world!");
+    let args = Args::parse();
+    println!("Hello, {}!", args.user);
 }
